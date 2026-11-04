@@ -18,19 +18,19 @@ var textStrings_EN = {
 	"wowNothing": "WOWWEE, IT'S NOTHING",
 
 	// Act 2
-	"crazySquareAttacks": "CRAZED SQUARE ATTACKS",
+	"crazySquareAttacks": "CRAZED BLACK TEAM ATTACKS",
 	"justMissed": "oooooh just missed it",
 	"somethingInteresting": "(ya gotta catch 'em doing *something* interesting...)",
 	"whoIsScreaming": "(ya gotta catch who's screaming at 'em)",
-	"circleFearsSquares": "CIRCLE FEARS SQUARES",
+	"circleFearsSquares": "WHITE TEAM FEARS BLACK TEAM",
 	"whoScaresThem": "(ya gotta also catch *who* they're scared by)",
-	"areTheyScared": "(ya gotta catch 'em *being* scared by a square)", // not used
-	"squaresSnubCircles": "SQUARES SNUB CIRCLES",
-	"areTheySnubbed": "(ya gotta catch 'em *while* snubbing a circle)", // not used
+	"areTheyScared": "(ya gotta catch 'em *being* scared by the other team)", // not used
+	"squaresSnubCircles": "BLACK TEAM SNUBS WHITE TEAM",
+	"areTheySnubbed": "(ya gotta catch 'em *while* snubbing the other team)", // not used
 	"everyoneHates": "EVERYONE HATES EVERYONE!!1!",
 	"almostEveryoneHates": "ALMOST EVERYONE HATES EVERYONE...",
-	"squaresHateCircles": "SQUARES HATE CIRCLES",
-	"circlesHateSquares": "CIRCLES HATE SQUARES",
+	"squaresHateCircles": "BLACK TEAM HATES WHITE TEAM",
+	"circlesHateSquares": "WHITE TEAM HATES BLACK TEAM",
 	"areTheyYelling": "(ya gotta catch 'em *yelling* at others)", // not used
 	"nerdsNow": "what are these nerds doing now",
 	"schockedPeep": "why's this peep shocked?",

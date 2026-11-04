@@ -22,50 +22,48 @@ function Scene_Quote(){
     var q2Sprite = MakeSprite("quote0002");
     q2.addChild(q2Sprite);
     
-    // dynamic fontsize for quote
-    var quoteString = textStrings["WSOTATOTSU"];
-    var fontsize = 34, max = 46;
-    if(quoteString.length > max){
-        fontsize = Math.floor(max * fontsize / quoteString.length);
-    }
-
+    // dynamic fontsize for quote with wordWrap to prevent screen overflow
+    var quoteString = '"' + textStrings["WSOTATOTSU"] + '"';
     var q2QuoteText = new PIXI.Text(quoteString, {
-    	font: fontsize + "px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+    	font: "18px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
     	fill: "#FFFFFF",
-    	align: "center"
+    	align: "center",
+    	wordWrap: true,
+    	wordWrapWidth: 780,
+    	lineHeight: 30
     });
     q2QuoteText.anchor.x = 0.5;
     q2QuoteText.anchor.y = 0.5;
     q2QuoteText.x = Game.width / 2;
-    q2QuoteText.y = Game.height / 2 - 10;
+    q2QuoteText.y = Game.height / 2 - 15;
     q2.addChild(q2QuoteText);
     
     var q3Sprite = MakeSprite("quote0003");
     q3.addChild(q3Sprite);
     
-    var q3Name = new PIXI.Text(textStrings["MarshallMcLuhan"], {
-    	font: "28px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-    	fill: "#FFFFFF",
+    var q3Name = new PIXI.Text("- " + textStrings["MarshallMcLuhan"], {
+    	font: "16px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
+    	fill: "#fee761",
     	align: "center"
     });
     q3Name.anchor.x = 0.5;
     q3Name.anchor.y = 0.5;
     q3Name.x = Game.width / 2;
-    q3Name.y = Game.height / 2 + 55;
+    q3Name.y = Game.height / 2 + 45;
     q3.addChild(q3Name);
     
     var q4Sprite = MakeSprite("quote0004");
     q4.addChild(q4Sprite);
     
-    var q4Text = new PIXI.Text(textStrings["misatrributed"], {
-    	font: "22px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-    	fill: "#888888",
+    var q4Text = new PIXI.Text("(" + textStrings["misatrributed"] + ")", {
+    	font: "12px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
+    	fill: "#8b9bb4",
     	align: "center"
     });
     q4Text.anchor.x = 0.5;
     q4Text.anchor.y = 0.5;
     q4Text.x = Game.width / 2;
-    q4Text.y = Game.height / 2 + 95;
+    q4Text.y = Game.height / 2 + 80;
     q4.addChild(q4Text);
     
 	// Add 'em in.

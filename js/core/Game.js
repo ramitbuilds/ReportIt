@@ -19,9 +19,10 @@ Game.stats = true;
 // INIT
 Game.init = function(HACK){
 
-	// Set up PIXI with antialiasing for crisp minimalist rendering
+	// Set up PIXI with nearest-neighbor scaling for authentic indie pixel art
+	PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.NEAREST;
 	Game.renderer = new PIXI.WebGLRenderer(Game.width, Game.height, {
-		antialias: true,
+		antialias: false,
 		transparent: false,
 		resolution: window.devicePixelRatio || 1,
 		autoResize: false

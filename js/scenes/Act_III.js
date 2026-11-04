@@ -199,8 +199,15 @@ function Stage_Panic(self){
         creepyAmbience.stop();
         panic.stop();
 
-        // Next Scene!
-        Game.sceneManager.gotoScene("Credits");
+        // Nighttime Ambience
+        var ambience = Game.sounds.bg_nighttime;
+        ambience.loop(true);
+        ambience.volume(0);
+        ambience.play();
+        ambience.fade(0, 1, 2000);
+
+        // Next Scene! (Skip credits straight to post-credits epilogue)
+        Game.sceneManager.gotoScene("Post_Credits");
 
     };
 

@@ -17,7 +17,11 @@ var _s = function(seconds){
 
 // IMAGE CRAP
 var MakeSprite = function(textureName){
-	return new PIXI.Sprite(PIXI.loader.resources[textureName].texture);
+	var tex = PIXI.loader.resources[textureName].texture;
+	if(tex && tex.baseTexture){
+		tex.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
+	}
+	return new PIXI.Sprite(tex);
 }
 
 // MovieClips!
@@ -31,7 +35,11 @@ var MakeMovieClip = function(resourceName){
 	for(var i=0; i<numFrames; i++){
 		var str = "0000" + i; // FOUR leading zeroes
 		str = str.substr(str.length-4);
-		frames.push(PIXI.Texture.fromFrame(resourceName+str));
+		var tex = PIXI.Texture.fromFrame(resourceName+str);
+		if(tex && tex.baseTexture){
+			tex.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
+		}
+		frames.push(tex);
 	}
 	var mc = new PIXI.extras.MovieClip(frames);
 

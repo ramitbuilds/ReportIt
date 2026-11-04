@@ -39,8 +39,8 @@ function Scene_Preloader(){
 
 	// Loading text
 	var text = new PIXI.Text("loading... 0%", {
-		font: "22px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-		fill: "#4C4C4C",
+		font: "16px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
+		fill: "#fee761",
 		align: "center"
 	});
     text.anchor.x = 0.5;
@@ -51,27 +51,29 @@ function Scene_Preloader(){
     
     // Playing time text
     var playingTimeText = new PIXI.Text(textStrings["playingTime"], {
-    	font: "24px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-    	fill: "#FFFFFF",
+    	font: "14px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
+    	fill: "#fee761",
     	align: "center"
     });
     playingTimeText.anchor.x = 0.5;
     playingTimeText.anchor.y = 0.5;
     playingTimeText.x = bar.x;
-    playingTimeText.y = 345;
+    playingTimeText.y = 338;
     Game.stage.addChild(playingTimeText);
     
-    // Warning text
+    // Warning text with clean column wrapping
     var warningText = new PIXI.Text(textStrings["warning"], {
-    	font: "18px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-    	fill: "#777777",
+    	font: "11px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
+    	fill: "#8b9bb4",
     	align: "center",
-    	lineHeight: 24
+    	wordWrap: true,
+    	wordWrapWidth: 410,
+    	lineHeight: 18
     });
     warningText.anchor.x = 0.5;
     warningText.anchor.y = 0.5;
     warningText.x = bar.x;
-    warningText.y = 422;
+    warningText.y = 415;
     Game.stage.addChild(warningText);
     
     // CURSOR

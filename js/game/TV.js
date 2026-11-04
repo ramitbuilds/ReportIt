@@ -98,7 +98,7 @@ function TV(scene){
 				fontsize = Math.floor(max * fontsize / text.length);
 			}
 		    var chyronText = new PIXI.Text(text, {
-		    	font: "bold " + fontsize + "px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+		    	font: "bold " + fontsize + "px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
 		    	align: "left",
 		    	fill: "#FFFFFF"
 		    });
