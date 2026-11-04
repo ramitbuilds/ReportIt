@@ -1,0 +1,111 @@
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	background: radial-gradient(ellipse at center, #1e1f26 0%, #0d0e12 100%);
+	color: #f0f0f5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+#stage {
+	background: #000;
+	width: 960px;
+	height: 540px;
+	position: relative;
+	border-radius: 8px;
+	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06);
+	overflow: hidden;
+	cursor: none;
+}
+
+#stage canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+#modal_shade {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(10, 10, 14, 0.7);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	z-index: 10;
+	cursor: pointer;
+	transition: opacity 0.25s ease;
+}
+
+.overlay {
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 20;
+	text-align: center;
+	pointer-events: none;
+}
+
+#paused {
+	cursor: pointer;
+	pointer-events: auto;
+}
+
+#paused .pause-title {
+	font-size: 36px;
+	font-weight: 700;
+	letter-spacing: 6px;
+	text-transform: uppercase;
+	color: #ffffff;
+	margin-bottom: 8px;
+	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+#paused .pause-subtitle {
+	font-size: 15px;
+	font-weight: 400;
+	letter-spacing: 1.5px;
+	color: rgba(255, 255, 255, 0.65);
+}
+
+#warning {
+	max-width: 480px;
+	padding: 32px;
+	background: rgba(20, 20, 26, 0.9);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 12px;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+	pointer-events: auto;
+}
+
+#warning .warning-title {
+	font-size: 24px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	color: #ff5555;
+	margin-bottom: 12px;
+}
+
+#warning .warning-desc {
+	font-size: 15px;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.8);
+}
