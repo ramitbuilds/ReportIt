@@ -1,10 +1,11 @@
 # ReportIt
 
-> *A game about news cycles, vicious cycles, and the stories we choose to broadcast.*
+> *A 2D indie pixel-art game about news cycles, vicious cycles, and the stories we choose to broadcast.*
 
 [![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
-[![WebGL](https://img.shields.io/badge/Render-WebGL-blue.svg)](https://pixijs.com/)
-[![Built with HTML5](https://img.shields.io/badge/Platform-HTML5%20Canvas-orange.svg)](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
+[![Art Style: 16-Bit Pixel Art](https://img.shields.io/badge/Art_Style-16--Bit_Pixel_Art-blueviolet.svg)](#-art--visual-design)
+[![WebGL Nearest-Neighbor](https://img.shields.io/badge/Render-WebGL_Pixel_Perfect-success.svg)](https://pixijs.com/)
+[![Built with HTML5](https://img.shields.io/badge/Platform-HTML5_Canvas-orange.svg)](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
 
 ---
 
@@ -12,18 +13,20 @@
 
 **ReportIt** is a satirical, narrative-driven point-and-click game exploring how sensationalism, media amplification, and outrage loops shape human behavior. 
 
-Capture moments in the crowd, broadcast them on the big screen, and observe how society reacts to what you choose to report.
+Step into the shoes of a broadcast camera operator: frame moments in the crowd, broadcast them on the retro CRT monitor, and observe how society reacts to the stories you choose to report.
 
 > *"We shape our tools and then our tools shape us."*
 
 ---
 
-## ✦ Highlights
+## ✦ Key Features
 
-- **Minimalist Aesthetic** — Refined monochrome-and-red visual palette with ambient staging, crisp typography, and distraction-free UI.
-- **Fluid Animation Engine** — Synchronized fixed-timestep game loop powered by `requestAnimationFrame`, delivering rock-solid 60 FPS across high-refresh displays.
-- **Smooth Viewfinder Controls** — Cushioned camera motion with responsive lerp tracking for tactile, effortless photography.
-- **Dynamic Feedback Loop** — Procedural crowd behavior that directly reflects the photos you feed to the media stream.
+- **Retro 2D Pixel-Art World** — Handcrafted 16-bit environments including a dithered day park, nocturnal firefly epilogue, arcade studio home screen, and vintage CRT television prop.
+- **Pixel-Perfect Rendering** — Nearest-neighbor texture sampling with WebGL point-filtering for razor-sharp, zero-blur indie visuals.
+- **Humanized Characters & Expressive Faces** — Stylized peeps featuring natural skin tones, distinct hairstyles (curls, bangs, fades), team-based outfits (Team White vs Team Black), and 13 animated facial expressions.
+- **Sensationalist Broadcast HUD** — Retro viewfinder with pixel reticles, recording indicators, scanline flash, and dynamic breaking news chyrons.
+- **60 FPS Fixed-Timestep Loop** — Fluid physics and smooth camera lerp tracking synchronized with `requestAnimationFrame`.
+- **Streamlined Ending & Replay** — Direct narrative flow with a dedicated "Thanks for Playing" end screen and instantaneous "Play Again" restart.
 
 ---
 
@@ -35,7 +38,7 @@ Run the game locally using any lightweight HTTP server:
 ```bash
 python -m http.server 8000
 ```
-Then visit **[http://localhost:8000](http://localhost:8000)**.
+Open **[http://localhost:8000](http://localhost:8000)** in your browser.
 
 ### With Node.js
 ```bash
@@ -60,9 +63,10 @@ Right-click `index.html` and select **"Open with Live Server"**.
 
 ## ✦ Tech Stack
 
-- **Rendering:** [PIXI.js](https://pixijs.com/) (Hardware-accelerated 2D WebGL)
-- **Audio:** [Howler.js](https://howlerjs.com/) (Web Audio API with multi-channel playback)
-- **Tweening:** [TweenJS](https://createjs.com/tweenjs) (Parametric easing & state choreography)
-- **Staging:** Modern CSS with responsive viewport framing and frosted-glass overlays
+- **Rendering:** [PIXI.js](https://pixijs.com/) with point-filtered WebGL & `SCALE_MODES.NEAREST`
+- **Typography:** [Google Fonts](https://fonts.google.com/) (`Silkscreen`, `Press Start 2P`)
+- **Audio:** [Howler.js](https://howlerjs.com/) (Multi-channel Web Audio playback)
+- **Tweening:** [TweenJS](https://createjs.com/tweenjs) (Choreographed easing curves & transitions)
+- **Styling:** Modern CSS with crisp-edge canvas rendering and arcade bezel framing
 
 ---
