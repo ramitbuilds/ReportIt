@@ -25,17 +25,17 @@ function Scene_Quote(){
     // dynamic fontsize for quote with wordWrap to prevent screen overflow
     var quoteString = '"' + textStrings["WSOTATOTSU"] + '"';
     var q2QuoteText = new PIXI.Text(quoteString, {
-    	font: "18px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
+    	font: "16px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
     	fill: "#FFFFFF",
     	align: "center",
     	wordWrap: true,
-    	wordWrapWidth: 780,
-    	lineHeight: 30
+    	wordWrapWidth: 760,
+    	lineHeight: 32
     });
     q2QuoteText.anchor.x = 0.5;
     q2QuoteText.anchor.y = 0.5;
     q2QuoteText.x = Game.width / 2;
-    q2QuoteText.y = Game.height / 2 - 15;
+    q2QuoteText.y = Game.height / 2 - 40;
     q2.addChild(q2QuoteText);
     
     var q3Sprite = MakeSprite("quote0003");
@@ -49,7 +49,7 @@ function Scene_Quote(){
     q3Name.anchor.x = 0.5;
     q3Name.anchor.y = 0.5;
     q3Name.x = Game.width / 2;
-    q3Name.y = Game.height / 2 + 45;
+    q3Name.y = Game.height / 2 + 50;
     q3.addChild(q3Name);
     
     var q4Sprite = MakeSprite("quote0004");
@@ -63,7 +63,7 @@ function Scene_Quote(){
     q4Text.anchor.x = 0.5;
     q4Text.anchor.y = 0.5;
     q4Text.x = Game.width / 2;
-    q4Text.y = Game.height / 2 + 80;
+    q4Text.y = Game.height / 2 + 90;
     q4.addChild(q4Text);
     
 	// Add 'em in.

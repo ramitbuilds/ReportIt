@@ -196,7 +196,7 @@ Game.loadAssets = function(completeCallback, progressCallback, PRELOADER){
 		}
 
 		// Otherwise, is an image. Leave it to PIXI.
-		var assetSrc = (src.indexOf('?') === -1) ? (src + '?v=20261105f') : src;
+		var assetSrc = (src.indexOf('?') === -1) ? (src + '?v=20261105g') : src;
 	    loader.add(key, assetSrc);
 
 	}

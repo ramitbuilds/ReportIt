@@ -97,10 +97,10 @@ var textStrings_EN = {
 
 	// (quote0002.png)
 	"WBWWB": "Report It.",
-	"WSOTATOTSU": "We shape our tools and then our tools shape us.",
+	"WSOTATOTSU": "If you're not careful, the media will have you hating the people who are being oppressed, and loving the people who are doing the oppressing.",
 
 	// (quote0003.png)
-	"MarshallMcLuhan": "Marshall McLuhan",
+	"MarshallMcLuhan": "Malcolm X",
 
 	// (quote0004.png)
 	"misatrributed": "(misattributed)",
@@ -206,7 +206,7 @@ var textStrings_DE = {
 	"WSOTATOTSU": "Wir formen unsere Werkzeuge, und dann formen unsere Werkzeuge uns.",
 
 	// (quote0003.png)
-	"MarshallMcLuhan": "Marshall McLuhan", // name; just here in case you want to display text instead of graphic. /stefan
+	"MarshallMcLuhan": "Malcolm X", // name; just here in case you want to display text instead of graphic. /stefan
 
 	// (quote0004.png)
 	"misatrributed": "(falsch zugeschrieben)",
@@ -307,10 +307,10 @@ var textStrings_FA = {
 
 	// (quote0002.png)
 	"WBWWB": "!تو همان که می نَمایی هستی",
-	"WSOTATOTSU": "We shape our tools and then our tools shape us.",
+	"WSOTATOTSU": "If you're not careful, the media will have you hating the people who are being oppressed, and loving the people who are doing the oppressing.",
 
 	// (quote0003.png)
-	"MarshallMcLuhan": "Marshall McLuhan",
+	"MarshallMcLuhan": "Malcolm X",
 
 	// (quote0004.png)
 	"misatrributed": "(!با مقداری تغییر)",
@@ -515,7 +515,7 @@ var textStrings_PT_BR = { //I put that way because portuguese from Brazil (PT_BR
 	"WSOTATOTSU": "Nós moldamos nossas ferramentas e então nossas ferramentas nos moldam.",
 
 	// (quote0003.png)
-	"MarshallMcLuhan": "Marshall McLuhan",
+	"MarshallMcLuhan": "Malcolm X",
 
 	// (quote0004.png)
 	"misatrributed": "(atribuído erroneamente)",
@@ -617,7 +617,7 @@ var textStrings_ES = {
 	"WSOTATOTSU": "Nosotros damos forma a nuestras herramientas y luego nuestras herramientas nos dan forma a nosotros.",
 
 	// (quote0003.png)
-	"MarshallMcLuhan": "Marshall McLuhan",
+	"MarshallMcLuhan": "Malcolm X",
 
 	// (quote0004.png)
 	"misatrributed": "(misattributed)",
@@ -821,7 +821,7 @@ var textStrings_TR = {
 	"WSOTATOTSU": "Aletlerimizi biz şekillendiririz ve sonra aletlerimiz bizi şekillendirir.",
 
 	// (quote0003.png)
-	"MarshallMcLuhan": "Marshall McLuhan",
+	"MarshallMcLuhan": "Malcolm X",
 
 	// (quote0004.png)
 	"misatrributed": "(yanlış bir şekilde ona atfedilir)",
