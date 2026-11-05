@@ -59,6 +59,66 @@ function Camera(scene, options){
     self.frame.anchor.x = self.frame.anchor.y = 0.5;
     self.graphics.addChild(self.frame);
 
+	// STORY TARGET LOCK BADGE
+	self.storyBadge = new PIXI.Container();
+	var sbBg = new PIXI.Graphics();
+	sbBg.beginFill(0x0a160d, 0.9);
+	sbBg.lineStyle(1.5, 0x22c55e, 1);
+	sbBg.drawRect(-65, -10, 130, 20);
+	sbBg.endFill();
+	self.storyBadge.addChild(sbBg);
+	
+	var sbText = new PIXI.Text("● TARGET LOCKED", {
+		font: "10px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
+		fill: "#4ade80",
+		align: "center"
+	});
+	sbText.anchor.x = 0.5;
+	sbText.anchor.y = 0.5;
+	self.storyBadge.addChild(sbText);
+	self.storyBadge.x = 0;
+	self.storyBadge.y = -self.height/2 + 16;
+	self.storyBadge.visible = false;
+	self.graphics.addChild(self.storyBadge);
+
+	// Check if camera frames an interesting story subject
+	self.checkStoryTarget = function(){
+		if(self.frozen || !scene.world || !scene.world.props){
+			self.storyBadge.visible = false;
+			self.frame.tint = 0xffffff;
+			return;
+		}
+		var cl = self.x - self.width * 0.48;
+		var cr = self.x + self.width * 0.48;
+		var ct = self.y - self.height * 0.48;
+		var cb = self.y + self.height * 0.48;
+		
+		var found = false;
+		var props = scene.world.props;
+		for(var i=0; i<props.length; i++){
+			var p = props[i];
+			if(!p || p.killed) continue;
+			if(p.x >= cl && p.x <= cr && p.y >= ct && p.y <= cb){
+				if(p.wearingHat || p._CLASS_=="HatPeep" || p._CLASS_=="LoverPeep" || 
+				   p._CLASS_=="CrazyPeep" || p._CLASS_=="HappyWeirdoPeep" || p._CLASS_=="HelpingAnim" || 
+				   p._CLASS_=="ProtestAnim" || p._CLASS_=="NervousPeep" || p._CLASS_=="SnobbyPeep" || 
+				   p._CLASS_=="AngryPeep" || p._CLASS_=="PanicPeep" || p._CLASS_=="MurderPeep" || 
+				   p._CLASS_=="DeadBody" || p._CLASS_=="EvilHatPeep" || p._CLASS_=="Cricket" ||
+				   p.isAngry || p.shocked){
+					found = true;
+					break;
+				}
+			}
+		}
+		if(found){
+			self.storyBadge.visible = true;
+			self.frame.tint = 0x86efac; // soft glowing emerald brackets
+		}else{
+			self.storyBadge.visible = false;
+			self.frame.tint = 0xffffff;
+		}
+	};
+
 	if(!options.noIntro){
 	    self.instructions = new PIXI.Sprite(resources.cam_instructions.texture);
 		self.instructions.scale.x = self.instructions.scale.y = 0.5;
@@ -227,7 +287,10 @@ function Camera(scene, options){
 
 	};
 	self.update = function(){
-		if(!self.frozen) self.updatePosition(false);
+		if(!self.frozen){
+			self.updatePosition(false);
+			self.checkStoryTarget();
+		}
 	};
 
 	// And that's all she wrote.

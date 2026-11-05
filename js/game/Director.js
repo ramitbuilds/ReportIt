@@ -24,6 +24,43 @@ function Director(scene){
 	// Scene
 	self.scene = scene;
 
+	// HINT BANNER FOR STRUGGLING PLAYERS
+	self.dudCount = 0;
+	self.hintBanner = new PIXI.Container();
+	var hbBg = new PIXI.Graphics();
+	hbBg.beginFill(0x0e1c12, 0.94);
+	hbBg.lineStyle(2, 0xfacc15, 1);
+	hbBg.drawRect(-260, -18, 520, 36);
+	hbBg.endFill();
+	self.hintBanner.addChild(hbBg);
+
+	self.hbText = new PIXI.Text("💡 HINT: Find the person wearing a golden hat!", {
+		font: "11px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
+		fill: "#fef08a",
+		align: "center"
+	});
+	self.hbText.anchor.x = 0.5;
+	self.hbText.anchor.y = 0.5;
+	self.hintBanner.addChild(self.hbText);
+	self.hintBanner.x = Game.width / 2;
+	self.hintBanner.y = 36;
+	self.hintBanner.alpha = 0;
+	self.hintBanner.visible = false;
+	Game.stage.addChild(self.hintBanner);
+
+	self.showHint = function(msg){
+		self.hbText.text = msg;
+		self.hintBanner.visible = true;
+		Tween_get(self.hintBanner).to({alpha: 1}, _s(0.3)).wait(_s(4.0)).to({alpha: 0}, _s(0.5)).call(function(){
+			self.hintBanner.visible = false;
+		});
+	};
+	self.hideHint = function(){
+		Tween_get(self.hintBanner).to({alpha: 0}, _s(0.2)).call(function(){
+			self.hintBanner.visible = false;
+		});
+	};
+
 	// Stages
 	self.callbacks = {};
 	self.callback = function(callbackName){
@@ -426,6 +463,36 @@ function Director(scene){
 			y: Game.height/2,
 			scale: 1
 		});
+
+		// Dynamic Helper Hints if player takes multiple dud shots
+		var data = self.photoData;
+		var wasSuccess = (data && (data.audience > 0 || data.audienceCircles > 0 || data.audienceSquares > 0 || data.forceChyron));
+		if(wasSuccess){
+			self.dudCount = 0;
+			self.hideHint();
+		}else{
+			self.dudCount = (self.dudCount || 0) + 1;
+			if(self.dudCount >= 2){
+				// Check current stage to give pinpoint guidance
+				var hintMsg = "💡 HINT: Look for people acting strange or standing out!";
+				var props = scene.world.props;
+				var hasHat = props.some(function(p){ return p._CLASS_=="HatPeep" && !p.killed; });
+				var hasLovers = props.some(function(p){ return p._CLASS_=="LoverPeep" && !p.killed; });
+				var hasWeirdo = props.some(function(p){ return (p._CLASS_=="HappyWeirdoPeep" || p._CLASS_=="HelpingAnim") && !p.killed; });
+				var hasProtest = props.some(function(p){ return p._CLASS_=="ProtestAnim" && !p.killed; });
+				
+				if(hasHat){
+					hintMsg = "💡 ASSIGNMENT: Frame the person in the golden hat!";
+				}else if(hasLovers){
+					hintMsg = "💡 ASSIGNMENT: Frame the couple walking in love!";
+				}else if(hasWeirdo){
+					hintMsg = "💡 ASSIGNMENT: Frame someone unusual or helping others!";
+				}else if(hasProtest){
+					hintMsg = "💡 ASSIGNMENT: Frame the protesters spreading peace!";
+				}
+				self.showHint(hintMsg);
+			}
+		}
 
 		// CALLBACK
 		self.callback("reset");
