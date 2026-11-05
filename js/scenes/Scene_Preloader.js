@@ -1,6 +1,5 @@
 Game.addToManifest({
 	bg_preload: "sprites/bg_preload.png",
-	bg_preload_2: "sprites/bg_preload_2.png",
 	preload_play: "sprites/misc/preload_play.json"
 }, true);
 
@@ -9,38 +8,21 @@ function Scene_Preloader(){
 	var self = this;
 	Scene.call(self);
 
-	// Background!
+	// Full-screen green park background (no TV)
 	Game.stage.addChild(MakeSprite("bg_preload"));
 
-	// RECURSIVE SCREEN
-	var renderTexturePoolIndex = 0;
-	var renderTexturePool = [
-		new PIXI.RenderTexture(Game.renderer, Game.width, Game.height),
-		new PIXI.RenderTexture(Game.renderer, Game.width, Game.height)
-	];
-	self.stream = new PIXI.Sprite();
-	self.stream.x = 722;
-	self.stream.y = 359;
-	self.stream.scale.x = self.stream.scale.y = 0.29;
-	self.stream.anchor.x = self.stream.anchor.y = 0.5;
-	self.stream.rotation = 0.087263889;
-	Game.stage.addChild(self.stream);
-
-	// Background! #2
-	Game.stage.addChild(MakeSprite("bg_preload_2"));
-
-	// Loading Bar
+	// Centered Play Button / Loading Bar (Canvas width 960 -> Center 480)
 	var bar = MakeMovieClip("preload_play");
 	bar.anchor.x = bar.anchor.y = 0.5;
-	bar.x = 278;
-	bar.y = 250;
+	bar.x = 480;
+	bar.y = 238;
 	Game.stage.addChild(bar);
 	var barEase = 0.9;
 
 	// Loading text
 	var text = new PIXI.Text("loading... 0%", {
-		font: "16px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
-		fill: "#fee761",
+		font: "15px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
+		fill: "#fde047",
 		align: "center"
 	});
     text.anchor.x = 0.5;
@@ -49,55 +31,44 @@ function Scene_Preloader(){
     text.y = bar.y;
     Game.stage.addChild(text);
     
-    // Playing time text
+    // Playing time text - centered
     var playingTimeText = new PIXI.Text(textStrings["playingTime"], {
-    	font: "14px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
-    	fill: "#fee761",
+    	font: "13px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
+    	fill: "#fde047",
     	align: "center"
     });
     playingTimeText.anchor.x = 0.5;
     playingTimeText.anchor.y = 0.5;
     playingTimeText.x = bar.x;
-    playingTimeText.y = 338;
+    playingTimeText.y = 328;
     Game.stage.addChild(playingTimeText);
     
-    // Warning text with clean column wrapping
+    // Warning disclaimer centered both horizontally and vertically inside its box
     var warningText = new PIXI.Text(textStrings["warning"], {
     	font: "11px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
-    	fill: "#8b9bb4",
+    	fill: "#c6d4c8",
     	align: "center",
     	wordWrap: true,
-    	wordWrapWidth: 410,
-    	lineHeight: 18
+    	wordWrapWidth: 520,
+    	lineHeight: 20
     });
     warningText.anchor.x = 0.5;
     warningText.anchor.y = 0.5;
     warningText.x = bar.x;
-    warningText.y = 415;
+    warningText.y = 428;
     Game.stage.addChild(warningText);
     
     // CURSOR
     var cursor = new Cursor(self);
     Game.stage.addChild(cursor.graphics);
 
-	// Update!
+	// Update loop
 	self.update = function(){
-
-		// RECURSIVE SCREEN
-		var renderTexture = renderTexturePool[renderTexturePoolIndex];
-	    renderTexture.render(Game.stage);
-	    renderTexturePoolIndex = (renderTexturePoolIndex+1)%renderTexturePool.length;
-	    self.stream.texture = renderTexture;
-
-	    // THE BUTTON!
 	    var scale = bar.scale.x;
 	    var gotoScale = (bar.currentFrame==2) ? 1.02 : 1.00;
 	    scale = scale*barEase + gotoScale*(1-barEase);
 	    bar.scale.x = bar.scale.y = scale;
-
-	    // Ya
 	    cursor.update((bar.currentFrame==2));
-
 	};
 
 	Game.loadAssets(function(){

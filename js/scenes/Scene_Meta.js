@@ -54,7 +54,7 @@ function Scene_Meta(){
 	chyron.addChild(bg);
 
 	// Chyron Text
-	var text = "WE BECOME WHAT WE BEHOLD";
+	var text = "REPORT IT";
 	var fontsize=100, max=14;
 	if(text.length>max){ // more than [max] chars...
 		fontsize = Math.floor(max*fontsize/text.length);

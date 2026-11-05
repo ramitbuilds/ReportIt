@@ -30,7 +30,7 @@ function Scene_Post_Post_Credits(){
 	thanksText.y = 180;
 	cont.addChild(thanksText);
 
-	var subtitleText = new PIXI.Text("WE BECOME WHAT WE BEHOLD", {
+	var subtitleText = new PIXI.Text("REPORT IT", {
 		font: "14px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
 		fill: "#8b9bb4",
 		align: "center"

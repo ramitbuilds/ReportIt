@@ -96,7 +96,7 @@ var textStrings_EN = {
 	"toBeContinued": "(to be continued!)",
 
 	// (quote0002.png)
-	"WBWWB": "We become what we behold.",
+	"WBWWB": "Report It.",
 	"WSOTATOTSU": "We shape our tools and then our tools shape us.",
 
 	// (quote0003.png)
@@ -202,7 +202,7 @@ var textStrings_DE = {
 	"toBeContinued": "(wird fortgesetzt!)",
 
 	// (quote0002.png)
-	"WBWWB": "We become what we behold.", // I'd leave that in English, even for the German translation. /stefan
+	"WBWWB": "Report It.", // I'd leave that in English, even for the German translation. /stefan
 	"WSOTATOTSU": "Wir formen unsere Werkzeuge, und dann formen unsere Werkzeuge uns.",
 
 	// (quote0003.png)
@@ -613,7 +613,7 @@ var textStrings_ES = {
 	"toBeContinued": "(continuará!)",
 
 	// (quote0002.png)
-	"WBWWB": "We become what we behold.",
+	"WBWWB": "Report It.",
 	"WSOTATOTSU": "Nosotros damos forma a nuestras herramientas y luego nuestras herramientas nos dan forma a nosotros.",
 
 	// (quote0003.png)
