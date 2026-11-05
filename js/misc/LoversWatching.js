@@ -7,16 +7,18 @@ function LoversWatching(type){
 	var mc = MakeMovieClip("lovers_watching");
 	self.graphics = mc;
 	
+	self._CLASS_ = "LoversWatching";
+	self.type = type;
 	self.breathe = 0;
 	self.breatheSpeed = 0;
 	if(type=="circle"){
-		mc.x = 520;
-		mc.y = 380;
+		self.x = mc.x = 520;
+		self.y = mc.y = 380;
 		self.breatheSpeed = 0.025;
 		mc.gotoAndStop(0);
 	}else{
-		mc.x = 550;
-		mc.y = 375;
+		self.x = mc.x = 550;
+		self.y = mc.y = 375;
 		self.breatheSpeed = 0.020;
 		mc.gotoAndStop(1);
 	}

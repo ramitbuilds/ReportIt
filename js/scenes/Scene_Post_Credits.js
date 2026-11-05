@@ -5,15 +5,7 @@ Game.addToManifest({
 
 /************************************
 
-THE GAME SCENE. THE BIG 'UN.
-
-ACT I - Teaching controls, showing main feedback loop
-ACT II - Crazy, Nervous, Snobby, Angry escalation...
-ACT III - Protest! (what gameplay here???)
-ACT IV - MURDER AND VIOLENCE AND AHHHHHH. #BeScaredBeAngry
-
-(different scene...)
-ACT V - Post-credits peace
+ACT V - Post-credits epilogue: Peace & Reconciliation
 
 *************************************/
 
@@ -21,11 +13,6 @@ function Scene_Post_Credits(){
 
 	var self = this;
 	Scene.call(self);
-
-    // HACK: Background Ambience
-    /*var ambience = Game.sounds.bg_nighttime;
-    ambience.loop(true);
-    ambience.play();*/
 
 	////////////
 	// SET UP //
@@ -41,18 +28,26 @@ function Scene_Post_Credits(){
         bg: "bg_dark"
     });
     self.world.layers.bg.addChild(MakeSprite("bg_shade"));
+
+    var transitioning = false;
     self.camera = new Camera(self,{
         noIntro: true,
         streaming: true,
         onTakePhoto: function(){
-            //if(self.camera.isOverTV()){
-            Game.sounds.bg_nighttime.stop();
-            Game.sceneManager.gotoScene("Post_Post_Credits");
-            //}
+            if(transitioning) return;
+            transitioning = true;
+            Tween_get(epilogueUI).to({alpha: 0}, _s(0.3));
+            setTimeout(function(){
+                if(Game.sounds.bg_nighttime) Game.sounds.bg_nighttime.stop();
+                Game.sceneManager.gotoScene("Post_Post_Credits");
+            }, 350);
         }
     });
     self.camera.x = Game.width;
     self.camera.y = Game.height;
+    if(self.camera.storyBadgeText){
+        self.camera.storyBadgeText.text = "● FINAL REPORT: PEACE";
+    }
 
     // Put a SPRITE RIGHT IN THE BG
     self.stream = new PIXI.Sprite();
@@ -61,17 +56,6 @@ function Scene_Post_Credits(){
     self.stream.x = Game.width/2 - self.stream.width/2 - 2; // hack
     self.stream.y = Game.height/2 - self.stream.height/2 + 2; // hack
     self.world.layers.bg.addChild(self.stream);
-
-    // UPDATE
-    self.update = function(){
-
-        self.world.update();
-        self.camera.update();
-
-        // THE STREAM
-        self.stream.texture = self.camera.getTexture();
-
-    };
 
     //////////////////////
     // EVEN MORE SET UP //
@@ -105,8 +89,10 @@ function Scene_Post_Credits(){
     }
 
     // The lovers
-    self.world.addProp(new LoversWatching("circle"));
-    self.world.addProp(new LoversWatching("square"));
+    var loverCircle = new LoversWatching("circle");
+    var loverSquare = new LoversWatching("square");
+    self.world.addProp(loverCircle);
+    self.world.addProp(loverSquare);
 
     // The 3 crickets
     var cricketPositions = [
@@ -122,6 +108,87 @@ function Scene_Post_Credits(){
         cricket.mc.gotoAndStop(1);
         self.world.addProp(cricket);
     }
+
+    //////////////////////////////////////////
+    // EPILOGUE STORY HUD & CLEAR PROMPT   //
+    //////////////////////////////////////////
+
+    var epilogueUI = new PIXI.Container();
+    Game.stage.addChild(epilogueUI);
+    epilogueUI.alpha = 0;
+
+    var cardW = 780;
+    var cardH = 96;
+    var cardX = (Game.width - cardW) / 2;
+    var cardY = 22;
+
+    var cardBg = new PIXI.Graphics();
+    cardBg.beginFill(0x060c18, 0.88);
+    cardBg.lineStyle(2, 0xfee761, 0.9);
+    cardBg.drawRoundedRect(cardX, cardY, cardW, cardH, 8);
+    cardBg.endFill();
+    epilogueUI.addChild(cardBg);
+
+    var epilogueTitle = new PIXI.Text("EPILOGUE: IN THE SILENCE AFTER THE STORM", {
+        font: "bold 15px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
+        fill: "#fee761",
+        align: "center"
+    });
+    epilogueTitle.anchor.x = 0.5;
+    epilogueTitle.anchor.y = 0.5;
+    epilogueTitle.x = Game.width / 2;
+    epilogueTitle.y = cardY + 22;
+    epilogueUI.addChild(epilogueTitle);
+
+    var epilogueDesc = new PIXI.Text("Senseless division tore the city apart, but two survivors sit together in peace.", {
+        font: "12px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
+        fill: "#e2e8f0",
+        align: "center"
+    });
+    epilogueDesc.anchor.x = 0.5;
+    epilogueDesc.anchor.y = 0.5;
+    epilogueDesc.x = Game.width / 2;
+    epilogueDesc.y = cardY + 48;
+    epilogueUI.addChild(epilogueDesc);
+
+    var epiloguePrompt = new PIXI.Text("▶ CLICK / TAP ANYWHERE TO SNAP THE FINAL REPORT & CONCLUDE ◀", {
+        font: "bold 12px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
+        fill: "#4ade80",
+        align: "center"
+    });
+    epiloguePrompt.anchor.x = 0.5;
+    epiloguePrompt.anchor.y = 0.5;
+    epiloguePrompt.x = Game.width / 2;
+    epiloguePrompt.y = cardY + 74;
+    epilogueUI.addChild(epiloguePrompt);
+
+    var loveTag = new PIXI.Text("♥ LOVE & PEACE ENDURE ♥", {
+        font: "bold 12px 'Silkscreen', 'Press Start 2P', monospace, sans-serif",
+        fill: "#f43f5e",
+        align: "center"
+    });
+    loveTag.anchor.x = 0.5;
+    loveTag.anchor.y = 0.5;
+    loveTag.x = 535;
+    loveTag.y = 312;
+    epilogueUI.addChild(loveTag);
+
+    Tween_get(epilogueUI).wait(_s(BEAT * 0.4)).to({alpha: 1}, _s(BEAT));
+
+    // UPDATE
+    var pulse = 0;
+    self.update = function(){
+        self.world.update();
+        self.camera.update();
+
+        // THE STREAM
+        self.stream.texture = self.camera.getTexture();
+
+        // Pulsing HUD effects
+        pulse += 0.06;
+        epiloguePrompt.alpha = 0.65 + Math.sin(pulse * 3) * 0.35;
+        loveTag.y = 312 + Math.sin(pulse * 2) * 3;
+    };
 
     /////////////
     // FADE IN //

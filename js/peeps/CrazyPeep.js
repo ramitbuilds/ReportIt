@@ -19,6 +19,7 @@ function CrazyPeep(scene){
 	var self = this;
 	Peep.apply(self, [scene]);
     self._CLASS_ = "CrazyPeep";
+    self.type = "square";
 
 	// MAD SPRITE
     var g = self.graphics;

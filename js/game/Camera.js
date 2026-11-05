@@ -103,7 +103,7 @@ function Camera(scene, options){
 				   p._CLASS_=="CrazyPeep" || p._CLASS_=="HappyWeirdoPeep" || p._CLASS_=="HelpingAnim" || 
 				   p._CLASS_=="ProtestAnim" || p._CLASS_=="NervousPeep" || p._CLASS_=="SnobbyPeep" || 
 				   p._CLASS_=="AngryPeep" || p._CLASS_=="PanicPeep" || p._CLASS_=="MurderPeep" || 
-				   p._CLASS_=="DeadBody" || p._CLASS_=="EvilHatPeep" || p._CLASS_=="Cricket" ||
+				   p._CLASS_=="DeadBody" || p._CLASS_=="EvilHatPeep" || p._CLASS_=="Cricket" || p._CLASS_=="LoversWatching" ||
 				   p.isAngry || p.shocked){
 					found = true;
 					break;
