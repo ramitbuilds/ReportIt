@@ -141,10 +141,17 @@ function Camera(scene, options){
     self.frozen = false;
     self.targetX = self.x;
     self.targetY = self.y;
-    Game.stage.mousemove = Game.stage.touchstart = Game.stage.touchmove = function(mouseData){
+    Game.stage.mousemove = Game.stage.touchmove = function(mouseData){
 	    var pos = mouseData.data.global;
 	    self.targetX = pos.x;
 	    self.targetY = pos.y;
+	};
+	Game.stage.touchstart = function(mouseData){
+	    var pos = mouseData.data.global;
+	    self.targetX = pos.x;
+	    self.targetY = pos.y;
+	    self.x = pos.x;
+	    self.y = pos.y;
 	};
 	Game.stage.mousedown = Game.stage.touchend = function(mouseData){
 

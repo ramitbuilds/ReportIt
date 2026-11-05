@@ -28,8 +28,8 @@ Game.init = function(HACK){
 		autoResize: false
 	});
 	// Keep CSS canvas size strictly at 960x540
-	Game.renderer.view.style.width = Game.width + "px";
-	Game.renderer.view.style.height = Game.height + "px";
+	Game.renderer.view.style.width = "100%";
+	Game.renderer.view.style.height = "100%";
 	document.querySelector("#stage").appendChild(Game.renderer.view);
 	Game.stage = new PIXI.Container();
 	Game.stage.interactive = true;
@@ -196,7 +196,7 @@ Game.loadAssets = function(completeCallback, progressCallback, PRELOADER){
 		}
 
 		// Otherwise, is an image. Leave it to PIXI.
-		var assetSrc = (src.indexOf('?') === -1) ? (src + '?v=20261105h') : src;
+		var assetSrc = (src.indexOf('?') === -1) ? (src + '?v=20261105j') : src;
 	    loader.add(key, assetSrc);
 
 	}
